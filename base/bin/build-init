@@ -6,7 +6,7 @@ echo "Setting up remote build environment..."
 ssh docker-host whoami
 # Cleanup
 ssh docker-host "(cd $REMOTE_BUILD_DIR && fin rm -f) || true"
-ssh docker-host "sudo rm -rf $REMOTE_BUILD_DIR; mkdir -p $REMOTE_BUILD_DIR"
+ssh docker-host "cd /home/ubuntu/builds; sudo rm -rf $REMOTE_BUILD_DIR; mkdir -p $REMOTE_BUILD_DIR"
 # Checkout sources
 ssh docker-host "cd $REMOTE_BUILD_DIR && git clone --branch="$BRANCH" --depth 50 $REPO_SSH:$REPO_OWNER/$REPO_SLUG.git . && git reset --hard $COMMIT && ls -la"
 # Configure sandbox settings
